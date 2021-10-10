@@ -3,10 +3,20 @@ from flask import render_template, redirect, session, request
 from flask_app.models.author import Author
 from flask_app.models.book import Book
 
+# ========================================
+# Main Page / Dashboard
+# ========================================
+
 @app.route("/books")
 def books():
+    all_books = Book.get_books_with_authors()
+    
+    return render_template("index.html", all_books = all_books)
 
-    return render_template("index.html")
+
+# ========================================
+# Create Book Routes
+# ========================================
 
 @app.route("/books/new")
 def new_book():
@@ -19,7 +29,7 @@ def create_book():
     data = {
         "title" : request.form['title'],
         "pages" : request.form['pages'],
-        "language" : request.form['lang'],
+        "lang" : request.form['lang'],
         "author_id" : request.form['author_id'],
         "description" : request.form['description'],
     }

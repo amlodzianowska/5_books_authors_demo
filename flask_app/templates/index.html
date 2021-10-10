@@ -1,33 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authors & Books</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
     <div class="container">
-        <a class = "btn btn-info float-end mt-2" href="/books/new">Add a New Book</a>
+        <a class="btn btn-info float-end mt-2" href="/books/new">Add a New Book</a>
         <h1>Hello there Authors & Books!</h1>
 
-        <h2>Add Author</h2>
-        <form action="/new_author" method = "POST">
-            <div class="mb-3">
-                <label class="form-label" for="fname">First Name: </label>
-                <input type="text" class="form-control" name="fname">
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="lname">Last Name: </label>
-                <input type="text" class="form-control" name="lname">
-            </div>
-            <input type="submit" value="Create Author" class = "btn btn-primary">
-        
-        
-        </form>
+        <h1>Available Books:</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Pages</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in all_books %}
+                <tr>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.pages }}</td>
+                    <td>{{ book.lang }}</td>
+                    <td>{{ book.author.first_name }} {{ book.author.last_name }}</td>
+                    <td>
+                        <a class="btn btn-light" href="#">Show</a>
+                        <a class="btn btn-light" href="#">Edit</a>
+                        <a class="btn btn-danger" href="#">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+                <h2>Add Author</h2>
+                <form action="/new_author" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label" for="fname">First Name: </label>
+                        <input type="text" class="form-control" name="fname">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="lname">Last Name: </label>
+                        <input type="text" class="form-control" name="lname">
+                    </div>
+                    <input type="submit" value="Create Author" class="btn btn-primary">
+
+
+                </form>
     </div>
 </body>
+
 </html>
