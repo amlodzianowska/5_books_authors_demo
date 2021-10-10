@@ -36,27 +36,26 @@
                     <td>{{ book.lang }}</td>
                     <td>{{ book.author.first_name }} {{ book.author.last_name }}</td>
                     <td>
-                        <a class="btn btn-light" href="#">Show</a>
+                        <a class="btn btn-light" href="/books/{{ book.id }}">Show</a>
                         <a class="btn btn-light" href="#">Edit</a>
                         <a class="btn btn-danger" href="#">Delete</a>
                     </td>
                 </tr>
                 {% endfor %}
-
-                <h2>Add Author</h2>
-                <form action="/new_author" method="POST">
-                    <div class="mb-3">
-                        <label class="form-label" for="fname">First Name: </label>
-                        <input type="text" class="form-control" name="fname">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label" for="lname">Last Name: </label>
-                        <input type="text" class="form-control" name="lname">
-                    </div>
-                    <input type="submit" value="Create Author" class="btn btn-primary">
-
-
-                </form>
+            </tbody>
+        </table>
+        <h2>Add Author</h2>
+        <form action="/new_author" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="fname">First Name: </label>
+                <input type="text" class="form-control" name="fname">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="lname">Last Name: </label>
+                <input type="text" class="form-control" name="lname">
+            </div>
+            <input type="submit" value="Create Author" class="btn btn-primary">
+        </form>
     </div>
 </body>
 

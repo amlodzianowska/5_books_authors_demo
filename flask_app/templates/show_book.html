@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<style>
+    a {
+        margin-left: 20px;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    .light {
+        font-weight: normal;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <a class="btn btn-info float-end mt-2" href="/books/new">Add a New Book</a>
+        <a class="btn btn-info float-end mt-2" href="/books">Home</a>
+        <h1>Information for Book #{{ book.id }}</h1>
+        <h4 class="light"><span class= "bold">Title: </span>{{ book.title }}</h4>
+        <h4 class="light"><span class= "bold">Number of Pages: : </span>{{ book.pages }}</h4>
+        <h4 class="light"><span class= "bold">Language: </span>{{ book.lang }}</h4>
+        <h4 class="light"><span class= "bold">Author: </span>{{ book.author.first_name }} {{ book.author.last_name }}</h4>
+        <h4 class="light"><span class= "bold">Desription: </span>{{ book.description }}</h4>
+        
+    </div>
+
+</body>
+
+</html>
